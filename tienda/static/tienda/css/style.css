@@ -175,16 +175,29 @@
   transition: transform 0.3s ease; /* Suaviza la transición */
 }
 
+
 .img-container {
-  width: 100px;
-  height: 100px;
+  width: 150px; /* Ajusta el ancho del contenedor de la imagen según sea necesario */
+  height: 150px; /* Ajusta la altura del contenedor de la imagen según sea necesario */
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 15px; /* Espacio entre la imagen y el texto */
 }
 
 .img-container img {
   max-width: 100%;
   max-height: 100%;
+}
+
+.card {
+  margin-bottom: 20px; /* Añade espacio entre las tarjetas */
+}
+
+.cart-items-container {
+  max-height: 150px; /* Ajusta esta altura según tus necesidades */
+  overflow-y: auto !important;
+  padding: 10px;
+  border: 1px solid #ccc; /* Opcional: para visualizar el contenedor */
 }

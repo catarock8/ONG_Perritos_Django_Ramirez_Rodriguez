@@ -1,5 +1,4 @@
 // PRIMERA FUNCION SOLICITADA
-// aquí está la primera funcion pedida que activa el formato oscuro
 function modoNocturno() {
     console.log("entro aqui");
     document.body.classList.toggle('modo-noc');
@@ -18,7 +17,6 @@ function modoNocturno() {
 }
 
 // SEGUNDA FUNCION SOLICITADA
-// con esta funcion al pasar por encima de las imagenes y los botones se van a agrandar un poco
 $(document).ready(function() {
     $('.zoom').hover(
         function() {
@@ -34,6 +32,24 @@ $(document).ready(function() {
 
     // Cargar el estado del modo nocturno desde localStorage
     loadModoNocturnoFromLocalStorage();
+
+    // Añadir eventos para los botones "Agregar al Carrito"
+    document.querySelectorAll('.agregar-carrito').forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+            let productoId = this.getAttribute('data-id');
+            let productName = this.getAttribute('data-name');
+            let productPrice = parseFloat(this.getAttribute('data-price'));
+            let productImage = this.getAttribute('data-image');
+            addToCart(productName, productPrice, productImage);
+            actualizarCantidad(productoId);
+        });
+    });
+
+    // Añadir evento para el botón "Borrar Todo"
+    document.getElementById('clear-cart').addEventListener('click', function() {
+        clearCart();
+    });
 });
 
 // FUNCION PARA EL CARRO DE COMPRAS
@@ -56,6 +72,16 @@ function removeFromCart(index) {
     totalPrice -= cart[index].price;
     // Eliminar el producto del carrito
     cart.splice(index, 1);
+    // Actualizar la interfaz de usuario
+    updateCartUI();
+    // Guardar el carrito en localStorage
+    saveCartToLocalStorage();
+}
+
+function clearCart() {
+    // Vaciar el carrito y reiniciar el precio total
+    cart = [];
+    totalPrice = 0;
     // Actualizar la interfaz de usuario
     updateCartUI();
     // Guardar el carrito en localStorage

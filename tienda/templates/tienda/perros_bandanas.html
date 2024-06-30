@@ -97,22 +97,24 @@
         <!-- Código del offcanvas del Carrito -->
         <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
           <div class="offcanvas-header">
-              <br>
               <h5 class="offcanvas-title letrachidacarrito" id="staticBackdropLabel">
                   <img src="{% static 'tienda/imagenestiendachida/monedacarrito.png' %}" width="60px">Carrito de compras
                   <img src="{% static 'tienda/imagenestiendachida/monedacarrito.png' %}" width="60px">
               </h5>
               <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
-          <div class="cart">
+          <div class="cart text-center">
               <h2>Carrito de Compras</h2>
-              <ul id="cart-items"></ul>
+              <ul id="cart-items" class="list-unstyled"></ul>
               <p>Total: $<span id="total-price">0</span></p>
+              <button type="button" class="btn btn-warning mb-2">
+                <a class="letrachida2" id="go-to-pay" data-url="{% url 'paginadepagos' %}" href="#" style="text-decoration: none; color: inherit;">IR A PAGAR</a>
+              </button>
+              <button type="button" class="btn btn-danger mt-2" id="clear-cart">Borrar Todo</button>
           </div>
-          <button type="button" class="btn btn-warning">
-            <a class="letrachida2" id="go-to-pay" data-url="{% url 'paginadepagos' %}" href="#" style="text-decoration: none; color: inherit;">IR A PAGAR</a>
-        </button>
-      </div>
+        </div>
+        
+        
       
 
     <!--Navbar naranja-->
@@ -143,22 +145,26 @@
     <button onclick="modoNocturno()" class="botonnoche zoom">MODO NOCTURNO</button>
 
     <!--Cards-->
-    <div class="margen_cards">
-        {% for producto in productos_bandanas_perros %}
-        <div class="card h-100">
-          <div class="img-container">
-            <img src="{{ producto.imagen.url }}" class="card-img-top zoom" alt="{{ producto.nombre }}">
+    <div class="container margen_cards">
+      <div class="row">
+          {% for producto in productos_bandanas_perros %}
+          <div class="col-md-6 mb-4">
+              <div class="card d-flex flex-row align-items-center">
+                  <div class="img-container">
+                      <img src="{{ producto.imagen.url }}" class="img zoom" alt="{{ producto.nombre }}">
+                  </div>
+                  <div class="card-body">
+                      <h5 class="card-title">{{ producto.nombre }}</h5>
+                      <p class="card-text">{{ producto.descripcion }}</p>
+                      <h4>${{ producto.precio }}</h4>
+                      <p>Quedan: <span class="cantidad-producto" data-id="{{ producto.id }}">{{ producto.cantidad }}</span></p>
+                      <a href="#" class="btn btn-primary zoom agregar-carrito {% if producto.cantidad == 0 %}disabled{% endif %}" data-id="{{ producto.id }}" data-name="{{ producto.nombre }}" data-price="{{ producto.precio }}" data-image="{{ producto.imagen.url }}">Agregar al Carrito</a>
+                  </div>
+              </div>
           </div>
-            <div class="card-body">
-                <h5 class="card-title">{{ producto.nombre }}</h5>
-                <p class="card-text">{{ producto.descripcion }}</p>
-                <h4>${{ producto.precio }}</h4>
-                <p>Quedan: <span class="cantidad-producto" data-id="{{ producto.id }}">{{ producto.cantidad }}</span></p>
-                <a href="#" class="btn btn-primary zoom agregar-carrito" data-id="{{ producto.id }}">Agregar al Carrito</a>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
+          {% endfor %}
+      </div>
+  </div>
 
     <footer>
       <div class="container-fluid">
