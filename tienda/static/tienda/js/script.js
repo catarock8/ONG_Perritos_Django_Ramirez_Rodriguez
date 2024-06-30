@@ -152,3 +152,38 @@ function setTotalAmount() {
 }
 
 window.onload = setTotalAmount;
+
+// Código para manejar el carrito y la cantidad de productos en tiempo real
+let carrito = JSON.parse(localStorage.getItem('carrito')) || {};
+
+function actualizarCarrito() {
+    document.querySelectorAll('.agregar-carrito').forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+            let productoId = this.getAttribute('data-id');
+            if (carrito[productoId]) {
+                carrito[productoId] += 1;
+            } else {
+                carrito[productoId] = 1;
+            }
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            actualizarCantidad(productoId);
+        });
+    });
+}
+
+function actualizarCantidad(productoId) {
+    fetch(`/api/productos/${productoId}/cantidad/`)
+        .then(response => response.json())
+        .then(data => {
+            document.querySelector(`.cantidad-producto[data-id="${productoId}"]`).innerText = `Quedan: ${data.cantidad}`;
+        });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    actualizarCarrito();
+    document.querySelectorAll('.cantidad-producto').forEach(element => {
+        let productoId = element.getAttribute('data-id');
+        actualizarCantidad(productoId);
+    });
+});

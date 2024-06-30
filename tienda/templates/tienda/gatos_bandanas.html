@@ -19,7 +19,7 @@
 
 <body>
 
-    <header> <!--aqui añadimos el navbar y ocuparemos el header solo para el navbar-->
+    <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
             <div class="container-fluid asap-condensed-medium-italic">
               <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'tienda/imagenestiendachida/Foto_del_logo-removebg-preview.png' %}" width="180px"></a>
@@ -52,10 +52,9 @@
                       </li> 
                 </ul>
                 
-                <ul class="navbar-nav ms-auto"><!--ms-auto se utiliza para alinear elementos a la izquierda. son clases de utilidad de Bootstrap-->
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop"><img src="{% static 'tienda/imagenestiendachida/3-removebg-preview.png' %}" width="90px"></a>
-                        <!--aqui el: data-bs-toggle="offcanvas" le dice que es un offcanva, y el: data-bs-target="#staticBackdrop" le pasa el id del offcanva de como está definido mas abajo y se mostrara lo que se defina allá abajo -->
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"><img src="{% static 'tienda/imagenestiendachida/4-removebg-preview.png' %}" width="90px"></a>
@@ -64,57 +63,55 @@
               </div>
             </div>
           </nav>
-    </header> <!--aqui termina el navbar-->
+    </header>
     
-        <!--ahora añadimos el div para el offcanva del perfil de usuario, codigo sacado de bootstrap-->
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-            <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="offcanvasRightLabel"></h5>
-              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body contenedor_offcanva_usuario">
-              <h2 class="centrartexto">Iniciar Sesión <img src="{% static 'tienda/imagenestiendachida/iconoperro_usuario.png' %}" width="50px"></h2>
-              <br>
-              <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">Correo Electrónico</label>
-              </div>
-              <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Contraseña</label>
-              </div>
-              <br>
-              <button type="button" class="btn btn-warning redondearboton moverboton">Iniciar sesión</button>
-              <br>
-              <br>
-              <hr><!--separacion que te lleva al registro-->
-              <br>
-              <h3 class="centrartexto">¿Aún no tienes cuenta?</h3><br>
-              <button type="button" class="btn btn-primary redondearboton moverboton"><a class="letrachida" href="{% url 'registro' %}">Registrate Aquí</a></button> 
-            </div>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasRightLabel"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        
-        <!-- Código del offcanvas del Carrito --><!-- aqui esta codeado con ejemplos insertados, es un como se deberia ver-->
-        <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
-          <div class="offcanvas-header">
-              <br>
-              <h5 class="offcanvas-title letrachidacarrito" id="staticBackdropLabel">
-                  <img src="{% static 'tienda/imagenestiendachida/monedacarrito.png' %}" width="60px">Carrito de compras
-                  <img src="{% static 'tienda/imagenestiendachida/monedacarrito.png' %}" width="60px">
-              </h5>
-              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <div class="offcanvas-body contenedor_offcanva_usuario">
+          <h2 class="centrartexto">Iniciar Sesión <img src="{% static 'tienda/imagenestiendachida/iconoperro_usuario.png' %}" width="50px"></h2>
+          <br>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Correo Electrónico</label>
           </div>
-          <div class="cart">
-              <h2>Carrito de Compras</h2>
-              <ul id="cart-items"></ul>
-              <p>Total: $<span id="total-price">0</span></p>
+          <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Contraseña</label>
           </div>
-          <button type="button" class="btn btn-warning">
-            <a class="letrachida2" id="go-to-pay" data-url="{% url 'paginadepagos' %}" href="#" style="text-decoration: none; color: inherit;">IR A PAGAR</a>
-        </button>
+          <br>
+          <button type="button" class="btn btn-warning redondearboton moverboton">Iniciar sesión</button>
+          <br>
+          <br>
+          <hr>
+          <br>
+          <h3 class="centrartexto">¿Aún no tienes cuenta?</h3><br>
+          <button type="button" class="btn btn-primary redondearboton moverboton"><a class="letrachida" href="{% url 'registro' %}">Registrate Aquí</a></button> 
+        </div>
+    </div>
+    
+    <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+      <div class="offcanvas-header">
+          <br>
+          <h5 class="offcanvas-title letrachidacarrito" id="staticBackdropLabel">
+              <img src="{% static 'tienda/imagenestiendachida/monedacarrito.png' %}" width="60px">Carrito de compras
+              <img src="{% static 'tienda/imagenestiendachida/monedacarrito.png' %}" width="60px">
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
+      <div class="cart">
+          <h2>Carrito de Compras</h2>
+          <ul id="cart-items"></ul>
+          <p>Total: $<span id="total-price">0</span></p>
+      </div>
+      <button type="button" class="btn btn-warning">
+        <a class="letrachida2" id="go-to-pay" data-url="{% url 'paginadepagos' %}" href="#" style="text-decoration: none; color: inherit;">IR A PAGAR</a>
+    </button>
+  </div>
+  
 
-    <!--Navbar naranja-->
     <br><br><br><br><br><br><br>
     <nav class="navbar navbar-expand-lg bg-orange rounded-custom navbar-container" id="navbar1">
         <div class="container-fluid">
@@ -138,192 +135,23 @@
         </div>
       </nav>
 
-          <!-- aquí añadimos el boton para hacer el modo osucro-->
-          <button onclick="modoNocturno()" class="botonnoche zoom">MODO NOCTURNO</button>
+    <button onclick="modoNocturno()" class="botonnoche zoom">MODO NOCTURNO</button>
 
-      
-    <!--Cards-->
     <div class="margen_cards">
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col">
-              <div class="card h-100">
-                <img src="{% static 'tienda/img_tienda_gatos/bandanagato1.webp' %}" class="card-img-top zoom" alt="...">
-                <div class="card-body"><br>
-                  <h5 class="card-title">Bandana Russ</h5>
-                  <p class="card-text">Color Rosa y Azul
-                  <br>
-                  Para Gato Raza Mediana/Grande
-                  Oferta 2x1
-                  <br>
-                  Poliester
-                  <br>
-                  <h4>$10.990</h4>
-                  </p>
-                  <a href="#" onclick="addToCart('Bandana Russ', 10990 , '{% static 'tienda/img_tienda_gatos/bandanagato1.webp' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                </div>
-              </div>
+        {% for producto in productos_bandanas_gatos %}
+        <div class="card h-100">
+            <img src="{{ producto.imagen.url }}" class="card-img-top zoom" alt="{{ producto.nombre }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ producto.nombre }}</h5>
+                <p class="card-text">{{ producto.descripcion }}</p>
+                <h4>${{ producto.precio }}</h4>
+                <p>Quedan: <span class="cantidad-producto" data-id="{{ producto.id }}">{{ producto.cantidad }}</span></p>
+                <a href="#" class="btn btn-primary zoom agregar-carrito" data-id="{{ producto.id }}">Agregar al Carrito</a>
             </div>
-            <div class="col">
-              <div class="card h-100">
-                <img src="{% static 'tienda/img_tienda_gatos/bandanagato2.webp' %}" class="card-img-top zoom" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Bandana Russ</h5>
-                  <p class="card-text">Color Rosa
-                    <br>
-                    Para gato raza Mediana/Pequeña
-                    <br>
-                    Detalle de pecas
-                    <br>
-                    <h4>$10.990</h4>
-                  </p>
-                  <a href="#" onclick="addToCart('Bandana Russ', 10990 , '{% static 'tienda/img_tienda_gatos/bandanagato2.webp' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card h-100">
-                <img src="{% static 'tienda/img_tienda_gatos/bandanagato3.webp' %}" class="card-img-top zoom" alt="...">
-                <div class="card-body"><br><br><br><br><br><br>
-                  <h5 class="card-title">Bandana Maxwell</h5>
-                  <p class="card-text">Color Roja
-                    <br>
-                    Para gato raza Mediana/Pequeña
-                    <br>
-                    Detalles dibujos
-                    <br>
-                    <h4>$9.990</h4>
-                  </p>
-                  <a href="#" onclick="addToCart('Bandana Maxwell', 9990 , '{% static 'tienda/img_tienda_gatos/bandanagato3.webp' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card h-100">
-                <img src="{% static 'tienda/img_tienda_gatos/bandanagato4.webp' %}" class="card-img-top zoom" alt="...">
-                <div class="card-body"><br><br><br><br><br>
-                  <h5 class="card-title">Bandana CatNew</h5>
-                  <p class="card-text">Correa Psicodelica
-                    <br>
-                    Para gatos de raza Grande
-                    <br>
-                    Colores varios
-                    <br>
-                    <h4>$11.990</h4>
-                  </p>
-                  <a href="#" onclick="addToCart('Bandana CatNew', 11990 , '{% static 'tienda/img_tienda_gatos/bandanagato4.webp' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                  <img src="{% static 'tienda/img_tienda_gatos/bandanagato5.webp' %}" class="card-img-top zoom" alt="...">
-                  <div class="card-body"><br><br><br><br><br><br>
-                    <h5 class="card-title">Bandana Perzk</h5>
-                    <p class="card-text"><br>
-                      Estilo de limones
-                      <br>
-                      Para gatos de raza pequeña
-                      <br>
-                      Artista: Joan Rsusrj
-                      <br>
-                      <h4>$9.990</h4>
-                    </p>
-                    <a href="#" onclick="addToCart('Bandana Perkz', 9990 , '{% static 'tienda/img_tienda_gatos/bandanagato5.webp' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card h-100">
-                  <img src="{% static 'tienda/img_tienda_gatos/bandanagato6.webp' %}" class="card-img-top zoom" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Bandana Buen Amigo</h5>
-                    <p class="card-text"><br>
-                      Diseño gatitos
-                      <br>
-                      Para gatos Medianos
-                      <br>
-                      Ajustable
-                      <br>
-                      <h4>$10.990</h4>
-                    </p>
-                    <a href="#" onclick="addToCart('Bandana Buen Amigo', 10990 , '{% static 'tienda/img_tienda_gatos/bandanagato6.webp' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card h-100">
-                  <img src="{% static 'tienda/img_tienda_gatos/bandanagato7.webp' %}" class="card-img-top zoom" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Bandana Buen Amigo</h5>
-                    <p class="card-text">
-                      Color Azul
-                      <br>
-                      Para gato raza pequeña
-                      <br>
-                      Detalles de Cactus
-                      <br>
-                      <h4>$9.990</h4>
-                    </p>
-                    <a href="#" onclick="addToCart('Bandana Buen Amigo', 9990 , '{% static 'tienda/img_tienda_gatos/bandanagato7.webp' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card h-100">
-                  <img src="{% static 'tienda/img_tienda_gatos/bandanagato8.webp' %}" class="card-img-top zoom" alt="...">
-                  <div class="card-body"><br><br><br><br><br><br>
-                    <h5 class="card-title">Bandana Maxwell</h5>
-                    <p class="card-text">Color Azul
-                      <br>
-                      Para gatos raza pequeños
-                      <br>
-                      Detalle renos
-                      <br>
-                      <h4>10.990</h4>
-                    </p>
-                    <a href="#" onclick="addToCart('Bandana Maxwell', 10990 , '{% static 'tienda/img_tienda_gatos/bandanagato8.webp' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card h-100">
-                  <img src="{% static 'tienda/img_tienda_gatos/bandanagato9.webp' %}" class="card-img-top zoom" alt="...">
-                  <div class="card-body"><br><br><br><br><br><br><br>
-                    <h5 class="card-title">Bandana Maxwell</h5>
-                    <p class="card-text">Color Negra
-                      <br>
-                      Para gatos de raza Mediana
-                      <br>
-                      Detalle puntillismo rojo
-                      <br>
-                      <h4>$10.990</h4>
-                    </p>
-                    <a href="#" onclick="addToCart('Bandana Maxwell', 10990 , '{% static 'tienda/img_tienda_gatos/bandanagato9.webp' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                  </div>
-                </div>
-              </div>
-          </div>
+        </div>
+        {% endfor %}
     </div>
 
-    <!--modal que que aparece al añadir al carrito-->
-    <div class="modal fade" id="confirmacioncompra" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Mensaje de Confirmación<img src="{% static 'tienda/imagenestiendachida/monedacarrito.png' %}" width="30px"></h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            ¿Deseas añadir este producto al carrito?
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">NO</button>
-            <button type="button" class="btn btn-warning">CONFIRMAR</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <br><br>
     <footer>
       <div class="container-fluid">
         <div class="row justify-content-center colorh2">

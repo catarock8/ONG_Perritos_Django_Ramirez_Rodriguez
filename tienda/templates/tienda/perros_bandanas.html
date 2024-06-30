@@ -94,7 +94,7 @@
             </div>
         </div>
         
-        <!-- Código del offcanvas del Carrito --><!-- aqui esta codeado con ejemplos insertados, es un como se deberia ver-->
+        <!-- Código del offcanvas del Carrito -->
         <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
           <div class="offcanvas-header">
               <br>
@@ -113,7 +113,7 @@
             <a class="letrachida2" id="go-to-pay" data-url="{% url 'paginadepagos' %}" href="#" style="text-decoration: none; color: inherit;">IR A PAGAR</a>
         </button>
       </div>
-
+      
 
     <!--Navbar naranja-->
     <br><br><br><br><br><br><br>
@@ -139,170 +139,25 @@
         </div>
       </nav>
 
-                <!-- aquí añadimos el boton para hacer el modo osucro-->
+          <!-- aquí añadimos el boton para hacer el modo osucro-->
     <button onclick="modoNocturno()" class="botonnoche zoom">MODO NOCTURNO</button>
 
-      
     <!--Cards-->
     <div class="margen_cards">
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col">
-              <div class="card h-100">
-                <img src="{% static 'tienda/img_tienda_perros/bandana1.jpg' %}" class="card-img-top zoom" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Bandana para Perros Kulcan</h5>
-                  <p class="card-text">40-20 cm
-                  <br>
-                  Ajustable x 9 cm
-                  <br>
-                  <h4>$4.990</h4>
-                  </p>
-                  <a href="#" onclick="addToCart('Bandana para Perros Kulcan', 4990 , '{% static 'tienda/img_tienda_perros/bandana1.jpg' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                </div>
-              </div>
+        {% for producto in productos_bandanas_perros %}
+        <div class="card h-100">
+            <img src="{{ producto.imagen.url }}" class="card-img-top zoom" alt="{{ producto.nombre }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ producto.nombre }}</h5>
+                <p class="card-text">{{ producto.descripcion }}</p>
+                <h4>${{ producto.precio }}</h4>
+                <p>Quedan: <span class="cantidad-producto" data-id="{{ producto.id }}">{{ producto.cantidad }}</span></p>
+                <a href="#" class="btn btn-primary zoom agregar-carrito" data-id="{{ producto.id }}">Agregar al Carrito</a>
             </div>
-            <div class="col">
-              <div class="card h-100">
-                <img src="{% static 'tienda/img_tienda_perros/bandana2.jpg' %}" class="card-img-top zoom" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Bandana Mascota La Hebra</h5>
-                  <p class="card-text">Tela de Lona
-                    <br>
-                    82 cms. de largo y 29 cms. de alto
-                    <br>
-                    <h4>$5.990</h4>
-                  </p>
-                  <a href="#" onclick="addToCart('Bandana Mascota La Hebra', 5990 , '{% static 'tienda/img_tienda_perros/bandana2.jpg' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card h-100">
-                <img src="{% static 'tienda/img_tienda_perros/bandana3.jpg' %}" class="card-img-top zoom" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Bandana para perros-Breeds</h5>
-                  <p class="card-text">Para perros grandes 
-                    <br>
-                    Largo de 70 cms,costados de 50 cm
-                    <br>
-                    <h4>$7.990</h4>
-                  </p>
-                  <a href="#" onclick="addToCart('Bandana para perros medianos-Breeds', 7990 , '{% static 'tienda/img_tienda_perros/bandana3.jpg' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card h-100">
-                <img src="{% static 'tienda/img_tienda_perros/bandana4.jpg' %}" class="card-img-top zoom" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Bandana para perros medianos-Breeds</h5>
-                  <p class="card-text"> Para perritos medianos 
-                    <br>
-                    Largo de 60 cms,costados de 40 cm
-                    <br>
-                    <h4>$7.990</h4>
-                  </p>
-                  <a href="#" onclick="addToCart('Bandana para perros medianos-Breeds', 7990 , '{% static 'tienda/img_tienda_perros/bandana4.jpg' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                  <img src="{% static 'tienda/img_tienda_perros/bandana5.jpg' %}" class="card-img-top zoom" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Bandana para perros pequeños-Breeds</h5>
-                    <p class="card-text">Para perritos pequeños
-                      <br>
-                      Largo de 50 cms,costados de 30 cm
-                      <br>
-                      <h4>$6.990</h4>
-                    </p>
-                    <a href="#" onclick="addToCart('Bandana para perros pequeños-Breeds', 6990 , '{% static 'tienda/img_tienda_perros/bandana5.jpg' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card h-100">
-                  <img src="{% static 'tienda/img_tienda_perros/bandana6.jpg' %}" class="card-img-top zoom" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Bandana para Perros Kulcan</h5>
-                    <p class="card-text">Para perros pequeños
-                      <br>
-                      40-20 cm Ajustable x 9 cm
-                      <br>
-                      <h4>$10.990</h4>
-                    </p>
-                    <a href="#" onclick="addToCart('Bandana para Perros Kulcan', 10990 , '{% static 'tienda/img_tienda_perros/bandana6.jpg' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card h-100">
-                    <img src="{% static 'tienda/img_tienda_perros/bandana7.jpg' %}" class="card-img-top zoom" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Bandana para Perros Kulcan</h5>
-                      <p class="card-text">Para perros pequeños Azul
-                          <br>
-                          40-20 cm Ajustable x 9 cm
-                          <br>
-                          <h4>$7.990</h4>
-                        </p>
-                        <a href="#" onclick="addToCart('Bandana para Perros Kulcan', 7990 , '{% static 'tienda/img_tienda_perros/bandana7.jpg' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                      </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card h-100">
-                    <img src="{% static 'tienda/img_tienda_perros/bandana8.jpg' %}" class="card-img-top zoom" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Bandana para Perros Kulcan</h5>
-                      <p class="card-text">Para perros pequeños Rosada
-                          <br>
-                          40-20 cm Ajustable x 9 cm
-                          <br>
-                          <h4>$7.990</h4>
-                        </p>
-                        <a href="#" onclick="addToCart('Bandana para Perros Kulcan', 7990 , '{% static 'tienda/img_tienda_perros/bandana8.jpg' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                      </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card h-100">
-                    <img src="{% static 'tienda/img_tienda_perros/bandana9.jpg' %}" class="card-img-top zoom" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Bandana para Mascotas Dpaseo Ibiza</h5>
-                      <p class="card-text">S/M: 35 x 35 x 48 cm
-                        <br>
-                        L/XL: 50 x 50 x 70 cm
-                        <br>
-                        <h4>$9.990</h4>
-                      </p>
-                      <a href="#" onclick="addToCart('Bandana para Mascotas Dpaseo Ibiza', 9990 , '{% static 'tienda/img_tienda_perros/bandana9.jpg' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                    </div>
-                  </div>
-                </div>
-            </div>
-      </div>
-
-    <!--modal que que aparece al añadir al carrito-->
-    <div class="modal fade" id="confirmacioncompra" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Mensaje de Confirmación<img src="{% static 'tienda/imagenestiendachida/monedacarrito.png' %}" width="30px"></h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            ¿Deseas añadir este producto al carrito?
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">NO</button>
-            <button type="button" class="btn btn-warning">CONFIRMAR</button>
-          </div>
         </div>
-      </div>
+        {% endfor %}
     </div>
-    <br><br>
+
     <footer>
       <div class="container-fluid">
         <div class="row justify-content-center colorh2">

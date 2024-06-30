@@ -94,7 +94,7 @@
             </div>
         </div>
         
-        <!-- Código del offcanvas del Carrito --><!-- aqui esta codeado con ejemplos insertados, es un como se deberia ver-->
+        <!-- Código del offcanvas del Carrito -->
         <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
           <div class="offcanvas-header">
               <br>
@@ -113,6 +113,7 @@
             <a class="letrachida2" id="go-to-pay" data-url="{% url 'paginadepagos' %}" href="#" style="text-decoration: none; color: inherit;">IR A PAGAR</a>
         </button>
       </div>
+      
     <br><br><br><br><br><br><br>
 
 
@@ -142,188 +143,22 @@
           <!-- aquí añadimos el boton para hacer el modo osucro-->
     <button onclick="modoNocturno()" class="botonnoche zoom">MODO NOCTURNO</button>
 
-      
     <!--Cards-->
     <div class="margen_cards">
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col">
-              <div class="card h-100">
-                <img src="{% static 'tienda/img_tienda_perros/correa1.jfif' %}" class="card-img-top zoom" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Correa 2 en 1 de Tráfico</h5>
-                  <p class="card-text">Color Rojo
-                  <br>
-                  Para Perro Raza Mediana/Grande
-                  <br>
-                  1.8 Metros, Minimo 9 kg
-                  <br>
-                  <h4>$10.990</h4>
-                  </p>
-                  <a href="#" onclick="addToCart('Correa 2 en 1 de Tráfico', 10990 , '{% static 'tienda/img_tienda_perros/correa1.jfif' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                </div>
-              </div>
+        {% for producto in productos_perros %}
+        <div class="card h-100">
+            <img src="{{ producto.imagen.url }}" class="card-img-top zoom" alt="{{ producto.nombre }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ producto.nombre }}</h5>
+                <p class="card-text">{{ producto.descripcion }}</p>
+                <h4>${{ producto.precio }}</h4>
+                <p>Quedan: <span class="cantidad-producto" data-id="{{ producto.id }}">{{ producto.cantidad }}</span></p>
+                <a href="#" class="btn btn-primary zoom agregar-carrito" data-id="{{ producto.id }}">Agregar al Carrito</a>
             </div>
-            <div class="col">
-              <div class="card h-100">
-                <img src="{% static 'tienda/img_tienda_perros/correa2.jfif' %}" class="card-img-top zoom" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Correa de Nylon</h5>
-                  <p class="card-text">Color Negro
-                    <br>
-                    Para perro raza Mediana/Grande
-                    <br>
-                    1.8 Metros
-                    <br>
-                    <h4>$10.990</h4>
-                  </p>
-                  <a href="#" onclick="addToCart('Correa de Nylon', 10990 , '{% static 'tienda/img_tienda_perros/correa2.jfif' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card h-100">
-                <img src="{% static 'tienda/img_tienda_perros/correa3.jfif' %}" class="card-img-top zoom" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Correa Reflejante de Cuerda Trenzada</h5>
-                  <p class="card-text">Color Rojo
-                    <br>
-                    Herraje Metálico para Perro
-                    <br>
-                    1.8 Metros, Minimo 9 kg
-                    <br>
-                    <h4>$9.990</h4>
-                  </p>
-                  <a href="#" onclick="addToCart('Correa Reflejante de Cuerda Trenzada', 9990 , '{% static 'tienda/img_tienda_perros/correa3.jfif' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card h-100">
-                <img src="{% static 'tienda/img_tienda_perros/correa4.jfif' %}" class="card-img-top zoom" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Correa Resistente Diseño Honey Multicolor</h5>
-                  <p class="card-text">Estilo Leopardo
-                    <br>
-                    Para perros de raza Grande
-                    <br>
-                    2.5 Metros, Minimo 9 kg 
-                    <br>
-                    <h4>$11.990</h4>
-                  </p>
-                  <a href="#" onclick="addToCart('Correa Resistente Diseño Honey Multicolor', 11990 , '{% static 'tienda/img_tienda_perros/correa4.jfif' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                  <img src="{% static 'tienda/img_tienda_perros/correa5.gif' %}" class="card-img-top zoom" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Correa en Tela</h5>
-                    <p class="card-text"><br>
-                      Estilo cuadros Rojo y Negro
-                      <br>
-                      Para perros de raza pequeña
-                      <br>
-                      1.5 Metros, Minimo 4 kg 
-                      <br>
-                      <h4>$9.990</h4>
-                    </p>
-                    <a href="#" onclick="addToCart('Correa en Tela', 9990 , '{% static 'tienda/img_tienda_perros/correa5.gif' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card h-100">
-                  <img src="{% static 'tienda/img_tienda_perros/correa6.jfif' %}" class="card-img-top zoom" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Correa Plana Color Rosa</h5>
-                    <p class="card-text"><br>
-                      Diseño Moteado
-                      <br>
-                      Para perros Medianos
-                      <br>
-                      1.8 Metros
-                      <br>
-                      <h4>$10.990</h4>
-                    </p>
-                    <a href="#" onclick="addToCart('Correa Plana Color Rosa', 10990 , '{% static 'tienda/img_tienda_perros/correa6.jfif' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card h-100">
-                  <img src="{% static 'tienda/img_tienda_perros/correa7.jfif' %}" class="card-img-top zoom" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Correa de Cuero Color Camel</h5>
-                    <p class="card-text">
-                      Color Camel
-                      <br>
-                      Para perro raza pequeña
-                      <br>
-                      1.5 Metros
-                      <br>
-                      <h4>$9.990</h4>
-                    </p>
-                    <a href="#" onclick="addToCart('Correa de Cuero Color Camel', 9990 , '{% static 'tienda/img_tienda_perros/correa7.jfif' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card h-100">
-                  <img src="{% static 'tienda/img_tienda_perros/correa8.jfif' %}" class="card-img-top zoom" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Correa de Nylon Color Turquesa</h5>
-                    <p class="card-text">Color Turquesa
-                      <br>
-                      Para perro raza Mediana/Grande
-                      <br>
-                      1.8 Metros
-                      <br>
-                      <h4>$10.990</h4>
-                    </p>
-                    <a href="#" onclick="addToCart('Correa de Nylon Color Turquesa', 10990 , '{% static 'tienda/img_tienda_perros/correa8.jfif' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card h-100">
-                  <img src="{% static 'tienda/img_tienda_perros/correa9.jfif' %}" class="card-img-top zoom" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title"> Correa Beige Diseño Donas</h5>
-                    <p class="card-text">Con Herraje Metálico para Perro
-                      <br>
-                      Para perro de raza Mediana
-                      <br>
-                      1.8 Metros
-                      <br>
-                      <h4>$10.990</h4>
-                    </p>
-                    <a href="#" onclick="addToCart('Correa Beige Diseño Donas', 10990 , '{% static 'tienda/img_tienda_perros/correa9.jfif' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                  </div>
-                </div>
-              </div>
-          </div>
+        </div>
+        {% endfor %}
     </div>
 
-    <!--modal que que aparece al añadir al carrito-->
-    <div class="modal fade" id="confirmacioncompra" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Mensaje de Confirmación<img src="{% static 'tienda/imagenestiendachida/monedacarrito.png' %}" width="30px"></h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            ¿Deseas añadir este producto al carrito?
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">NO</button>
-            <button type="button" class="btn btn-warning">CONFIRMAR</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <br><br>
     <footer>
       <div class="container-fluid">
         <div class="row justify-content-center colorh2">
