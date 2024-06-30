@@ -32,7 +32,8 @@
     <div class="container-fluid"> <!--un container-fluid de bootstrap hara que podamos acomodar los elementos a nuestra merced-->
         <div class="row justify-content-center "><!--con esto buscamos alinear al centro de la pagina el registro-->
         <div class="col-4 centrar borde">
-            <form>
+            <form method="POST" action="{% url 'registro' %}">
+                {% csrf_token %}
                 <div id="emailHelp" class="form-text">Tienda Chida! jamás compartirá tus datos personales.</div>
                 <br>
 
@@ -43,14 +44,14 @@
                 </div>
 
                 <div class="mb-3">
-                  <label for="apellidoPaterno" class="form-label">APELLIDO PATERNO:</label>
-                  <input type="text" class="form-control" id="apellidoPaterno" aria-describedby="apellidoPaterno" name="apellidoPaterno">
+                  <label for="apellido_paterno" class="form-label">APELLIDO PATERNO:</label>
+                  <input type="text" class="form-control" id="apellido_paterno" aria-describedby="apellido_paterno" name="apellido_paterno">
                   <div class="invalid-feedback">Campo obligatorio</div>
                 </div>
 
                 <div class="mb-3">
-                  <label for="apellidoMaterno" class="form-label">APELLIDO MATERNO:</label>
-                  <input type="text" class="form-control" id="apellidoMaterno" aria-describedby="apellidoMaterno" name="apellidoMaterno">
+                  <label for="apellido_materno" class="form-label">APELLIDO MATERNO:</label>
+                  <input type="text" class="form-control" id="apellido_materno" aria-describedby="apellido_materno" name="apellido_materno">
                   <div class="invalid-feedback">Campo obligatorio</div>
                 </div>
 
@@ -73,7 +74,7 @@
                 <div class="mb-3">
                   <label for="password" class="form-label">CREA TU CONTRASEÑA:</label>
                   <div class="input-group">
-                    <input type="password" class="form-control" id="password" aria-describedby="password">
+                    <input type="password" class="form-control" id="password" aria-describedby="password" name="password">
                     <button class="btn btn-outline-secondary" type="button" id="togglePassword">Mostrar</button>
                     <div class="invalid-feedback">Campo obligatorio</div>
                   </div>
@@ -83,17 +84,15 @@
                 <div class="mb-3">
                   <label for="confirmPassword" class="form-label">VERIFICA TU CONTRASEÑA:</label>
                   <div class="input-group">
-                    <input type="password" class="form-control" id="confirmPassword" aria-describedby="confirmPassword">
+                    <input type="password" class="form-control" id="confirmPassword" aria-describedby="confirmPassword" name="confirmPassword">
                     <button class="btn btn-outline-secondary" type="button" id="toggleConfirmPassword">Mostrar</button>
                     <div class="invalid-feedback">Campo obligatorio</div>
                   </div>
                   <div class="invalid-feedback" id="confirmPassword-error"></div>
                 </div>                
                 <br>
-                <button type="button" class="btn btn-danger zoom">CREAR CUENTA</button>
+                <button type="submit" class="btn btn-danger zoom">CREAR CUENTA</button>
               </form>
-
-
         </div>
     </div>
     </div>
@@ -130,6 +129,14 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+    {% if success %}
+    <script>
+        $(document).ready(function() {
+            $('#staticBackdrop').modal('show');
+        });
+    </script>
+    {% endif %}
 </body>
 
 </html>

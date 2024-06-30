@@ -84,5 +84,24 @@ def perros_identificadores(request):
     return render(request, 'tienda/perros_identificadores.html', context)
 
 def registro(request):
-    context = {}
-    return render(request, 'tienda/registro.html', context)
+    if request.method == 'POST':
+        rut = request.POST.get('rut')
+        nombres = request.POST.get('nombres')
+        apellido_paterno = request.POST.get('apellido_paterno')
+        apellido_materno = request.POST.get('apellido_materno')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        confirm_password = request.POST.get('confirmPassword')
+
+        # Validación de campos
+        if password != confirm_password:
+            return render(request, 'tienda/registro.html', {'error': 'Las contraseñas no coinciden'})
+
+        # Crear instancia del modelo Usuario y guardar en la base de datos
+        usuario = Usuario(rut=rut, nombres=nombres, apellido_paterno=apellido_paterno, apellido_materno=apellido_materno, email=email, password=password)
+        usuario.save()
+
+        return render(request, 'tienda/registro.html', {'success': True})
+        
+    else:
+        return render(request, 'tienda/registro.html')
