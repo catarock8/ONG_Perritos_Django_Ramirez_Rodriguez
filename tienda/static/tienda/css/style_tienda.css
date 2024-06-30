@@ -142,3 +142,18 @@
   .modo-noc .carousel-control-next-icon {
     filter: invert(1); /* Invierte el color de las flechas de control */
   }
+
+  .img-container {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+
+.img-container img {
+    max-width: 100%;
+    max-height: 100%;
+}

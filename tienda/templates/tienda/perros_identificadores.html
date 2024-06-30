@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="{% static 'tienda/css/style_tienda.css' %}" rel="stylesheet">
     <link href="{% static 'tienda/css/style.css' %}" rel="stylesheet">
-    <!--Fuente para natbar-->
+    <!--Fuente para navbar-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Asap+Condensed:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
@@ -94,7 +94,7 @@
             </div>
         </div>
         
-        <!-- Código del offcanvas del Carrito --><!-- aqui esta codeado con ejemplos insertados, es un como se deberia ver-->
+        <!-- Código del offcanvas del Carrito -->
         <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
           <div class="offcanvas-header">
               <br>
@@ -113,7 +113,7 @@
             <a class="letrachida2" id="go-to-pay" data-url="{% url 'paginadepagos' %}" href="#" style="text-decoration: none; color: inherit;">IR A PAGAR</a>
         </button>
       </div>
-
+      
 
     <!--Navbar naranja-->
     <br><br><br><br><br><br><br>
@@ -145,176 +145,22 @@
       
     <!--Cards-->
     <div class="margen_cards">
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col">
-              <div class="card h-100">
-                <img src="{% static 'tienda/img_tienda_perros/identi1.jpg' %}" class="card-img-top zoom" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title"><br>Etiqueta De Identificación Con Grabado Laser Incluido</h5>
-                  <p class="card-text">Medidas:
-                    <br>
-                    Largo: 2.6 cm
-                    <br>
-                    Ancho: 2.4 cm
-                    <br>
-                    Grosor: 0,2 cm
-                    <br>
-                  <h4>$3.990</h4>
-                  </p>
-                  <a href="#" onclick="addToCart('Etiqueta De Identificación Con Grabado Laser Incluido', 3990 , '{% static 'tienda/img_tienda_perros/identi1.jpg' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card h-100">
-                <img src="{% static 'tienda/img_tienda_perros/identi2.jpg' %}" class="card-img-top zoom" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Placa Para Mascotas Con Grabado Laser Incluido</h5>
-                  <p class="card-text">Contenido del Paquete:
-                    <br>
-                    1 Placa/Chapita, 1 Argolla Grande y 1 Argolla de Unión
-                    <br>
-                    Medidas: 4x2cm
-                    Grosor: 2 mm
-                    <br>
-                    <h4>$3.990</h4>
-                  </p>
-                  <a href="#" onclick="addToCart('Placa Para Mascotas Con Grabado Laser Incluido', 3990 , '{% static 'tienda/img_tienda_perros/identi2.jpg' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card h-100">
-                <img src="{% static 'tienda/img_tienda_perros/identi3.jpg' %}" class="card-img-top zoom" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title"><br><br><br><br>Placa Identificación Para Collar Rosado Mascotas Perro</h5>
-                  <p class="card-text">Medidas:
-                    <br>
-                    Largo: 2 cm
-                    <br>
-                    Ancho: 4 cm
-                    <br>
-                    Grosor: 0,8 cm
-                    <br>
-                    <h4>$5.990</h4>
-                  </p>
-                  <a href="#" onclick="addToCart('Placa Identificación Para Collar Rosado Mascotas Perro', 5990 , '{% static 'tienda/img_tienda_perros/identi3.jpg' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card h-100">
-                <img src="{% static 'tienda/img_tienda_perros/identi4.jpg' %}" class="card-img-top zoom" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">PopTags - Mexicana</h5>
-                  <p class="card-text"> Placa original perfecta para tu perrito y muy colorida
-                    <br>
-                    Tamaño: (2.5cm X 5.2cm)
-                    <br>
-                    <h4>$5.990</h4>
-                  </p>
-                  <a href="#" onclick="addToCart('PopTags - Mexicana', 5990 , '{% static 'tienda/img_tienda_perros/identi4.jpg' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                  <img src="{% static 'tienda/img_tienda_perros/identi5.jpg' %}" class="card-img-top zoom" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Hueso Acero Inoxidable Grande</h5>
-                    <p class="card-text">Prácticas y ligeras para la comodidad de los peluditos del hogar
-                        <br>
-                        Tamaño: Grande 3 x 6.7cm
-                      <br>
-                      <h4>$6.990</h4>
-                    </p>
-                    <a href="#" onclick="addToCart('Hueso Acero Inoxidable Grande', 6990 , '{% static 'tienda/img_tienda_perros/identi5.jpg' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card h-100">
-                  <img src="{% static 'tienda/img_tienda_perros/identi6.jpg' %}" class="card-img-top zoom" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">PopTags - Crispi</h5>
-                    <p class="card-text">Identifica a tu pelud@ con todo el estilo de las PopTags Petfy
-                      <br>
-                      Tamaño: HUESO (2.5cm X 5.2cm)
-                      <br>
-                      <h4>$5.990</h4>
-                    </p>
-                    <a href="#" onclick="addToCart('PopTags - Crispi', 5990 , '{% static 'tienda/img_tienda_perros/identi6.jpg' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card h-100">
-                  <img src="{% static 'tienda/img_tienda_perros/identi7.jpg' %}" class="card-img-top zoom" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">PopTags - Forest</h5>
-                    <p class="card-text">Identifica a tu pelud@ con todo el estilo de las PopTags Petfy
-                        <br>
-                        Tamaño: HUESO (2.5cm X 5.2cm)
-                        <br>
-                        <h4>$5.990</h4>
-                      </p>
-                      <a href="#" onclick="addToCart('PopTags - Forest', 5990 , '{% static 'tienda/img_tienda_perros/identi7.jpg' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                    </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card h-100">
-                  <img src="{% static 'tienda/img_tienda_perros/identi8.jpg' %}" class="card-img-top zoom" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">PopTags - Camo</h5>
-                    <p class="card-text">Identifica a tu pelud@ con todo el estilo de las PopTags Petfy
-                        <br>
-                        Tamaño: HUESO (2.5cm X 5.2cm)
-                        <br>
-                        <h4>$5.990</h4>
-                      </p>
-                      <a href="#" onclick="addToCart('PopTags - Camo', 5990 , '{% static 'tienda/img_tienda_perros/identi8.jpg' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                    </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card h-100">
-                  <img src="{% static 'tienda/img_tienda_perros/identi9.jpg' %}" class="card-img-top zoom" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">PopTags - Tie Dye</h5>
-                    <p class="card-text">Identifica a tu pelud@ con todo el estilo de las PopTags Petfy
-                        <br>
-                        Tamaño: HUESO (2.5cm X 5.2cm)
-                        <br>
-                        <h4>$5.990</h4>
-                    </p>
-                    <a href="#" onclick="addToCart('PopTags - Tie Dye', 5990 , '{% static 'tienda/img_tienda_perros/identi9.jpg' %}')"  class="btn btn-primary zoom">Agregar al Carrito</a>
-                  </div>
-                </div>
-              </div>
+        {% for producto in productos_identificadores_perros %}
+        <div class="card h-100">
+          <div class="img-container">
+            <img src="{{ producto.imagen.url }}" class="card-img-top zoom" alt="{{ producto.nombre }}">
           </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ producto.nombre }}</h5>
+                <p class="card-text">{{ producto.descripcion }}</p>
+                <h4>${{ producto.precio }}</h4>
+                <p>Quedan: <span class="cantidad-producto" data-id="{{ producto.id }}">{{ producto.cantidad }}</span></p>
+                <a href="#" class="btn btn-primary zoom agregar-carrito" data-id="{{ producto.id }}">Agregar al Carrito</a>
+            </div>
+        </div>
+        {% endfor %}
     </div>
 
-    <!--modal que que aparece al añadir al carrito-->
-    <div class="modal fade" id="confirmacioncompra" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Mensaje de Confirmación<img src="{% static 'tienda/imagenestiendachida/monedacarrito.png' %}" width="30px"></h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            ¿Deseas añadir este producto al carrito?
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">NO</button>
-            <button type="button" class="btn btn-warning">CONFIRMAR</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-    <br><br>
     <footer>
       <div class="container-fluid">
         <div class="row justify-content-center colorh2">
