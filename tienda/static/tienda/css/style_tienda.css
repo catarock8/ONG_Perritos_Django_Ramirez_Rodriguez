@@ -1,0 +1,144 @@
+.carousel-container {
+    width: 80%; /* Tamaño fijo del carrusel */
+    height: 500px; /* Tamaño fijo del carrusel */
+    overflow: hidden; /* Para ocultar el desbordamiento */
+     text-align: center;
+  }
+  
+  .carousel-inner {
+    width: 100%;
+    height: 100%;
+    }
+  
+  .carousel-item {
+    width: 100%;
+    height: 100%;
+    text-align: center; /* Para centrar la imagen horizontalmente */
+    }
+  
+  .carousel-item img {
+    max-width: 100%; /* La imagen se ajustará al ancho del carrusel */
+    max-height: 100%; /* La imagen se ajustará al alto del carrusel */
+    margin: auto; /* Centrar verticalmente */
+    }
+  
+  /* Navbar1 naranja */
+  #navbar1 .moverennavbar{
+    margin-left: 30px;
+  }
+  
+  #navbar1 .navbar-nav .nav-link{
+    color:aliceblue!important;
+  }
+  
+  #navbar1 .nav-item :hover{
+    color:rgb(207, 200, 200)!important;
+  
+  }
+  #navbar1 .navbar-nav{
+    margin: auto !important; /* Centra horizontalmente */
+    display: flex !important; /* Hace que los elementos de la lista se alineen en una fila */
+    justify-content: center !important; /* Alinea los elementos horizontalmente */
+  }
+  #navbar1 .navbar-nav .nav-item {
+    margin-right: 10px !important; /* Añade un espacio entre los elementos de la lista */
+  }
+  .bg-orange {
+    background-color:darksalmon;
+  }
+  .navbar-container {
+    max-width: 600px; /* Define el ancho máximo del contenedor del navbar */
+    margin: 0 auto; /* Centra el contenedor del navbar horizontalmente */
+    max-height: 30px;
+    margin-bottom: 20px;
+  }
+  .navbar_centrar {
+    margin: 40px !important;
+  }
+  .lilita-one-regular {
+    font-family: "Lilita One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 22px;
+  }
+  .rounded-custom {
+    border-radius: 25px !important; /* Ajusta el radio de los bordes para hacerlos más redondos */
+  }
+  
+  /* navbar2 titulo */
+  #navbar2 .navbar-nav .nav-link{
+    color:black!important;
+  }
+  #navbar2 .nav-item :hover{
+    color:gray!important;
+  
+  }
+  .asap-condensed-regular-italic {
+    font-family: "Asap Condensed", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .asap-condensed-medium-italic {
+    font-family: "Asap Condensed", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 22px;
+  }
+  
+  /*Cards */
+  .margen_cards{
+    margin-right: 30px !important;
+    margin-left: 30px !important;
+  }
+  
+  .modo-noc{
+    background-color: #121212 !important;
+    color: #ffffff !important;
+  }
+  
+  .modo-noc .colorh2{
+    background-color: #121212 !important;
+    color: #ffffff !important;
+  }
+  
+  .navbar-modo-noc {
+    background-color: #333333 !important;
+    color:  #83702bd4 !important;
+  }
+  
+  .navbar-modo-noc .navbar-brand,
+  .navbar-modo-noc .nav-link,
+  .navbar-modo-noc .dropdown-item {
+    color: #83702bd4 !important;
+  }
+  
+  .navbar-modo-noc .navbar-toggler-icon {
+    filter: invert(1);
+  }
+  
+  .botonnoche {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    border-radius: 30px;
+    background-color: #343a40;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    transition: background-color 0.3s;
+  }
+  
+  .botonnoche:hover {
+    background-color: #495057;
+  }
+  
+  
+  .modo-noc .carousel-item {
+    background-color: #333; /* Cambia el color de fondo de los elementos del carrusel */
+  }
+  
+  .modo-noc .carousel-control-prev-icon,
+  .modo-noc .carousel-control-next-icon {
+    filter: invert(1); /* Invierte el color de las flechas de control */
+  }

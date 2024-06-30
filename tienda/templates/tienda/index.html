@@ -1,0 +1,250 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Chida</title>
+    <!--añadimos el link con su CDN específico-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="{% static 'tienda/css/style.css' %}" rel="stylesheet">
+    <!--Fuentes externas de tipo de letra-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Asap+Condensed:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+    <!--NAVBAR-->
+    <header> <!--aqui añadimos el navbar y ocuparemos el header solo para el navbar-->
+        <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+            <div class="container-fluid asap-condensed-medium-italic">
+              <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'tienda/imagenestiendachida/Foto_del_logo-removebg-preview.png' %}" width="180px"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'index' %}#destino2">¿Qué es fundación Patas?</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}#destino">Quiénes somos!</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Tienda
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="{% url 'perros' %}">Perros</a></li>
+                      <li><a class="dropdown-item" href="{% url 'gatos' %}">Gatos</a></li>
+                    </ul>
+                  </li> 
+                </ul>
+
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'fundacionpatas' %}" target="_blank"><img src="{% static 'tienda/imagenestiendachida/logo patas png.png' %}" width="90px"></a>
+                      </li> 
+                </ul>
+                
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0"><!--ms-auto se utiliza para alinear elementos a la izquierda. son clases de utilidad de Bootstrap-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop"><img src="{% static 'tienda/imagenestiendachida/3-removebg-preview.png' %}" width="90px"></a>
+                        <!--aqui el: data-bs-toggle="offcanvas" le dice que es un offcanva, y el: data-bs-target="#staticBackdrop" le pasa el id del offcanva de como está definido mas abajo y se mostrara lo que se defina allá abajo -->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"><img src="{% static 'tienda/imagenestiendachida/4-removebg-preview.png' %}" width="90px"></a>
+                    </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+    </header> <!--aqui termina el navbar-->
+    
+    <!--ahora añadimos el div para el offcanva del perfil de usuario, codigo sacado de bootstrap-->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasRightLabel"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body contenedor_offcanva_usuario">
+          <h2 class="centrartexto">Iniciar Sesión <img src="{% static 'tienda/imagenestiendachida/iconoperro_usuario.png' %}" width="50px"></h2>
+          <br>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Correo Electrónico</label>
+          </div>
+          <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Contraseña</label>
+          </div>
+          <br>
+          <button type="button" class="btn btn-warning redondearboton moverboton">Iniciar sesión</button>
+          <br>
+          <br>
+          <hr><!--separacion que te lleva al registro-->
+          <br>
+          <h3 class="centrartexto">¿Aún no tienes cuenta?</h3><br>
+          <button type="button" class="btn btn-primary redondearboton moverboton"><a class="letrachida" href="{% url 'registro' %}">Registrate Aquí</a></button> 
+        </div>
+    </div>
+    
+    <!-- Código del offcanvas del Carrito --><!-- aqui esta codeado con ejemplos insertados, es un como se deberia ver-->
+    <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+      <div class="offcanvas-header">
+          <br>
+          <h5 class="offcanvas-title letrachidacarrito" id="staticBackdropLabel">
+              <img src="{% static 'tienda/imagenestiendachida/monedacarrito.png' %}" width="60px">Carrito de compras
+              <img src="{% static 'tienda/imagenestiendachida/monedacarrito.png' %}" width="60px">
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="cart">
+          <h2>Carrito de Compras</h2>
+          <ul id="cart-items"></ul>
+          <p>Total: $<span id="total-price">0</span></p>
+      </div>
+      <button type="button" class="btn btn-warning">
+        <a class="letrachida2" id="go-to-pay" data-url="{% url 'paginadepagos' %}" href="#" style="text-decoration: none; color: inherit;">IR A PAGAR</a>
+    </button>
+  </div>
+
+
+    <br><br><br><br><br>
+    <!-- aquí añadimos el boton para hacer el modo osucro-->
+    <button onclick="modoNocturno()" class="botonnoche zoom">MODO NOCTURNO</button>
+    
+ 
+
+
+    <!--CARRUSEL CON IMAGENES-->
+    <div class="container-fluid bg-light"> 
+        <div class="row justify-content-center carclaro">
+            <div class="col-9">
+              <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="false">
+                <!--data-bs-interval es una clase de bootstrap que sirve para cambiar el tiempo en que se demora en trancicionarse una imagen dentro de un carrusel-->
+                <!--data-bs-pause en false sirve para quitar la opcion por defecto que tenia este carrusel de bootstrap de pausarse si es que el mouse estaba encima del carrusel, en donde se le da el valor de false-->
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="{% static 'tienda/imagenestiendachida/carrusel6.png' %}" class="d-block w-100 zoom" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{% static 'tienda/imagenestiendachida/carrusel8.jpg' %}" class="d-block w-100 zoom" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{% static 'tienda/imagenestiendachida/carusel9.png' %}" class="d-block w-100 zoom" alt="...">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br><br>
+    <!--descripción sobre quienes somos-->
+    <div class="container-fluid">
+    <div class="row justify-content-center separacion" id="destino">
+      <div class="col-12 col-md-6">
+        <h2 class="colorh2">¿Quiénes somos?</h2>
+        <p class="colorh2">¡Hola! Somos un equipo de amigas unidas por una causa común: ayudar a nuestros amigos peludos y hacer del mundo un lugar mejor 
+          para ellos. Nos enorgullece presentar nuestra tienda, ubicada en la calle Los Montes, número 7707, donde cada compra que 
+          realizas es un paso más hacia un futuro más brillante para las mascotas necesitadas.</p>
+        <br>
+        <h2 class="colorh2">Nuestra Misión</h2>
+        <p class="colorh2">En Tienda Chida, nuestra misión es simple pero poderosa: mejorar la vida de las mascotas y de aquellos que las aman. Nos comprometemos
+           a ofrecer productos de calidad para tus amigos peludos, asegurando su comodidad y seguridad en cada paso del camino. Además, estamos dedicadas
+           a contribuir a la comunidad animal, destinando parte de nuestras ganancias a apoyar a organizaciones benéficas que comparten nuestra pasión
+           por los animales. En Tienda Chida, cada compra que realizas es un paso hacia un mundo más amable y solidario para nuestras mascotas.</p>
+      </div>
+      <div class="col-12 col-md-6">
+        <img src="{% static 'tienda/imagenestiendachida/perroentienda2.jpg' %}" class="img-fluid zoom" width="600px">
+      </div>
+      </div>
+      <div class="row justify-content-center separacion">
+        <div class="col-12 col-md-6 d-flex justify-content-around">
+          <img src="{% static 'tienda/imagenestiendachida/gatocon bandana.jpg' %}" class="img-fluid zoom" width="250px">
+          <img src="{% static 'tienda/imagenestiendachida/gatoconbandana2.jpg' %}" class="img-fluid zoom" width="250px">
+        </div>
+
+      </div>
+    </div>
+    <br>
+    <div class="row justify-content-center">
+    <div class="col-12 col-md-6">
+      <img src="{% static 'tienda/imagenestiendachida/perroconcorrea.jpg' %}" class="img-fluid zoom" width="600px">
+    </div></div>
+
+    <br><br><br>
+    <!--aqui se habla sobre la fundacion pero en la página de la tienda-->
+    <div class="container-fluid">
+      <div class="row justify-content-center separacion" id="destino2">
+        <div class="col-12">
+          <h2><img src="{% static 'tienda/imagenestiendachida/logo patas png.png' %}" width="50px"> Fundación Patas <img src="{% static 'tienda/imagenestiendachida/logo patas png.png' %}" width="50px"></h2>
+          <p>Fundación Patas es una organización dedicada al rescate, cuidado y protección de perros y gatos en situación de abandono o
+            maltrato. Nuestra misión es proporcionar un hogar seguro y amoroso para cada uno de estos animales, brindándoles atención veterinaria,
+            alimento y afecto mientras trabajamos para encontrarles hogares permanentes. 
+            Nuestro equipo de voluntarios está comprometido con el bienestar animal y trabaja incansablemente para rehabilitar a los animales
+            rescatados, proporcionándoles el cuidado necesario para que puedan recuperar su salud física y emocional. Además, llevamos a cabo 
+            campañas de concientización sobre la adopción responsable y la esterilización para controlar la población animal y prevenir el
+            sufrimiento innecesario.
+            En Fundación Patas, creemos que cada vida animal merece ser valorada y protegida. Trabajamos con pasión y dedicación para ofrecer 
+            una segunda oportunidad a aquellos que más lo necesitan, construyendo un futuro más compasivo y solidario para todos los animales.</p>
+        </div>       
+      </div>
+      <div class="row separacion">
+        <div class="col-sm-12 col-md-10">
+          <img src="{% static 'tienda/imagenestiendachida/gatosyperroscalle.png' %}" class="img-fluid zoom" width="1320px">
+        </div>
+      </div>
+      <br>
+      <div class="row separacion">
+        <p>¿Quieres marcar la diferencia en la vida de un amigo peludo necesitado? ¡Entonces únete a nosotros y haz clic en el botón de abajo 
+          para hacer tu contribución! En Fundación Patas, cada donación cuenta y cada gesto de apoyo significa un mundo para los perros y gatos 
+          que rescatamos. Tu generosidad nos permite proporcionar refugio, atención médica y amor a aquellos que más lo necesitan. Juntos, podemos 
+          crear un impacto positivo y construir un futuro más brillante para nuestros amigos de cuatro patas. ¡No esperes más, haz clic y sé parte 
+          del cambio hoy mismo!</p>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-6 centrartexto">
+          <button type="button" class="btn btn-danger redondearboton zoom"><a class="letrachida" href="{% url 'fundacionpatas' %}" target="_blank">Ir a Fundación Patas</a></button>
+        </div>
+      </div>
+    </div>
+
+
+<br><br><br><br>
+  <footer>
+    <div class="container-fluid">
+      <div class="row justify-content-center colorh2">
+      <h5 class="col-4 centrar colorh2"> Tienda Chida! Derechos Reservados 2024 Ⓡ</h5>
+      </div>
+  </div>
+  </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="{% static 'tienda/js/script.js' %}"></script>
+    <script>
+      document.getElementById('go-to-pay').addEventListener('click', function(event) {
+          event.preventDefault();
+          let totalPrice = document.getElementById('total-price').innerText;
+          let url = this.getAttribute('data-url');
+          window.location.href = `${url}?total=${totalPrice}`;
+      });
+      </script>
+   
+</body>
+</html>

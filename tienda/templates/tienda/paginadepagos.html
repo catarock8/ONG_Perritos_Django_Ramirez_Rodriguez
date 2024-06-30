@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Pagos</title>
+    <!--usaremos estilo interno pq son pocas funciones-->
+    <link href="{% static 'tienda/css/style_pagos.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="alinear">
+            <h2>Formulario de Pagos<img src="{% static 'tienda/imagenestiendachida/Logo-removebg-preview.png' %}" width="100px"></h2>
+        </div>
+        <form action="#">
+            <label for="nombre">Nombre en la Tarjeta:</label>
+            <input type="text" id="nombre" name="nombre" required><!--el required viene integrado en html5 y hace que me aparezca el msj de necesidad de llenado de campo-->
+
+            <label for="numero">Número de Tarjeta:</label>
+            <input type="text" id="numero" name="numero" required>
+
+            <label for="caducidad">Fecha de Caducidad:</label>
+            <input type="text" id="caducidad" name="caducidad" placeholder="MM/AA" required>
+
+            <label for="cvv">CVV:</label>
+            <input type="number" id="cvv" name="cvv" required>
+
+            <div id="monto-display" class="monto-display"></div>
+            <input type="hidden" id="monto" name="monto" required>
+
+            <label for="tipo">Tipo de Tarjeta:</label>
+            <select id="tipo" name="tipo" required>
+                <option value="visa">Visa</option>
+                <option value="mastercard">Mastercard</option>
+                <option value="americanexpress">American Express</option>
+            </select>
+
+            <input type="submit" value="Pagar">
+        </form>
+    </div>
+    <br><br>
+    <footer>
+        <div class="container-fluid">
+            <div class="row justify-content-center colorh2">
+                <h5 class="col-4 centrar colorh2"> Tienda Chida! Derechos Reservados 2024 Ⓡ</h5>
+            </div>
+        </div>
+    </footer>
+    <br><br>
+    <script src="{% static 'tienda/js/script_pagos.js' %}"></script>
+    <script src="{% static 'tienda/js/script.js' %}"></script>
+</body>
+</html>

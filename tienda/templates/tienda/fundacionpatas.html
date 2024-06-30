@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patas ONG</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Asap+Condensed:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+    <link href="{% static 'tienda/css/style.css' %}" rel="stylesheet">
+    <style>
+        body {
+            /* Establecer la imagen como fondo */
+            background-image: url("{% static 'tienda/imagenestiendachida/fondo_patasong.png' %}");
+            /* Centrar y fijar la imagen de fondo */
+            background-position: center;
+            background-size: cover;
+            /* Fijar la imagen de fondo para que no se mueva al hacer scroll */
+            background-attachment: fixed;
+            padding-right: 100px;
+            padding-left: 100px;
+        }
+        .logo {
+            text-align: center; /* Centrar horizontalmente */
+            padding-top: 20px; /* Ajustar la distancia desde la parte superior */
+        }
+        .logo img {
+            width: 200px; /* Ajustar el tamaño de la imagen según sea necesario */
+        }
+        .titulo {
+            text-align: center;
+        }
+        .p1{
+            text-align: center;
+            padding-right: 60px;
+            padding-left: 60px;
+        }
+        
+        .img{
+            text-align: center;
+        }
+        .asap-condensed-regular-italic {
+            font-family: "Asap Condensed", sans-serif;
+            font-weight: 400;
+            font-style: italic;
+            font-size:large
+        }
+        .boton{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <img src="{% static 'tienda/imagenestiendachida/logo patas png.png' %}" alt="Logo de Patas ONG">
+    </div>
+    <div class="titulo"><h1>Bienvenido a la Fundacion Patas ONG</h1></div>
+    <div class="p1 asap-condensed-regular-italic"><p>Nos enorgullece dedicar nuestro tiempo y esfuerzo a una causa noble: 
+        brindar ayuda y protección a nuestros amigos de cuatro patas. Somos una organización 
+        comprometida con el bienestar animal, trabajando incansablemente para garantizar que 
+        cada criatura peluda encuentre un hogar lleno de amor y compasión.</p>
+    </div>
+    <div class="img">
+        <img src="{% static 'tienda/imagenestiendachida/perritos1.jpg' %}" alt="Imagen1">
+    </div>
+    <div class="p1 asap-condensed-regular-italic"><p>Como equipo, nos esforzamos por ser la voz de aquellos que no pueden hablar 
+        por sí mismos, abogando por el respeto, la compasión y los derechos de los animales en cada 
+        paso que damos. Desde perros y gatos hasta otras criaturas necesitadas, nuestro objetivo es
+         proporcionarles la atención y el apoyo que merecen.</p>
+    </div>
+    <div class="img">
+        <img src="{% static 'tienda/imagenestiendachida/perritos2.webp' %}" alt="Imagen1">
+    </div>
+    <div class="p1 asap-condensed-regular-italic"><p>Además de nuestro trabajo de rescate y rehabilitación, también fomentamos la 
+        adopción responsable como una forma de brindar a nuestros amigos peludos una segunda oportunidad 
+        en la vida. Invitamos a todos aquellos que deseen agregar un miembro peludo a su familia a considerar
+         la adopción como la mejor opción. Cada animal tiene una historia única y está esperando ansiosamente
+          encontrar un hogar lleno de amor y afecto.</p>
+    </div>
+    <div class="img">
+        <img src="{% static 'tienda/imagenestiendachida/gatitos1.webp' %}" alt="Imagen1">
+    </div>
+    <div class="p1 asap-condensed-regular-italic"><p>Invitamos a todos aquellos que deseen agregar un miembro 
+        peludo a su familia a considerar la adopción como la mejor opción. Cada animal tiene una historia única
+         y está esperando ansiosamente encontrar un hogar lleno de amor y afecto.</p>
+    </div>
+    <br>
+    <div class="boton"><button type="button">Dona aquí</button></div>
+
+    <br><br><br>
+    <footer>
+        <div class="container-fluid">
+          <div class="row justify-content-center colorh2">
+          <h5 class="col-4 centrar colorh2"> Tienda Chida! Derechos Reservados 2024 Ⓡ</h5>
+          </div>
+      </div>
+      </footer>
+      <br><br><br>
+
+</body>
+</html>

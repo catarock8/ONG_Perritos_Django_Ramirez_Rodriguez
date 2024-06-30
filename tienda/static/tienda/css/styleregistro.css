@@ -1,0 +1,41 @@
+body {
+    background-image: url('imagenestiendachida/fondo2.jpg'); /* Cambia 'ruta/de/la/imagen.jpg' por la ruta de tu imagen */
+    background-position: center; /* Esto centra la imagen en el fondo */
+    /* Opcional: puedes agregar más propiedades para personalizar la apariencia, como la repetición de la imagen */
+    /* background-repeat: no-repeat; */
+    /* background-attachment: fixed; */
+    /* background-color: #f8f9fa; */
+    margin: 0; /* Elimina el margen predeterminado del cuerpo */
+    padding: 0; /* Elimina el relleno predeterminado del cuerpo */
+    height: 100vh;
+}
+
+.centrar{
+    text-align: center;
+    align-items: center;
+    border: 1px;
+}
+
+.borde {
+    display: inline-block; /* Hace que el div se ajuste al tamaño de su contenido */
+    border: 2px solid #000; /* 2px de ancho, sólido y color negro */
+    padding: 45px; /* Añade un espacio interno al contenido del div */
+    border-radius: 10px; /* Redondea los bordes del div */
+}
+
+.letrachida{
+    font-family: "Asap Condensed";
+    color:black;
+    text-decoration: none; /*pa quitar el subrayado*/
+}
+
+.letrachida2{
+    font-family: "Asap Condensed";
+    color:white;
+    text-decoration: none; /*pa quitar el subrayado*/
+}
+
+.zoom {
+    transition: transform 0.3s ease; /* Suaviza la transición */
+  }
+
