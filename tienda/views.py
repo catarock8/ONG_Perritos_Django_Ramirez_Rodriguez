@@ -102,6 +102,6 @@ def registro(request):
         usuario.save()
 
         return render(request, 'tienda/registro.html', {'success': True})
-        
+        #hola
     else:
         return render(request, 'tienda/registro.html')
