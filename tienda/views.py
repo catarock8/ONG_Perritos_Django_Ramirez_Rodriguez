@@ -1,11 +1,39 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 from .models import Producto, Usuario, Carrito, CarritoProducto, Orden, OrdenProducto
+import json
 
 def index(request):
     productos = Producto.objects.all()
     context = {'productos': productos}
     return render(request, 'tienda/index.html', context)
+
+@csrf_exempt
+def procesar_pago(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        productos = data.get('productos', [])
+        total = data.get('monto', 0)
+
+        # Crear una nueva orden
+        orden = Orden(total=total)
+        orden.save()
+
+        # Actualizar la cantidad de productos y crear relaciones OrdenProducto
+        for item in productos:
+            producto = Producto.objects.get(id=item['id'])
+            if producto.cantidad >= item['cantidad']:
+                producto.cantidad -= item['cantidad']
+                producto.save()
+
+                orden_producto = OrdenProducto(orden=orden, producto=producto, cantidad=item['cantidad'], precio=producto.precio)
+                orden_producto.save()
+            else:
+                return JsonResponse({'success': False, 'error': f'Stock insuficiente para el producto {producto.nombre}'})
+
+        return JsonResponse({'success': True})
+    return JsonResponse({'success': False, 'error': 'Método no permitido'})
 
 def realizar_compra(request):
     carrito = request.session.get('carrito', {})

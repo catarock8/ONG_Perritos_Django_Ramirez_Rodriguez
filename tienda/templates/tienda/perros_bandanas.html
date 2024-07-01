@@ -104,9 +104,11 @@
               <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
           <div class="cart text-center">
-              <ul id="cart-items" class="list-unstyled"></ul>
+              <div id="cart-items-container" class="cart-items-container">
+                  <ul id="cart-items" class="list-unstyled"></ul>
+              </div>
               <p>Total: $<span id="total-price">0</span></p>
-              <button type="button" class="btn btn-warning mb-2">
+              <button type="button" class="btn btn-warning mb-2" >
                 <a class="letrachida2" id="go-to-pay" data-url="{% url 'paginadepagos' %}" href="#" style="text-decoration: none; color: inherit;">IR A PAGAR</a>
               </button>
               <button type="button" class="btn btn-danger mt-2" id="clear-cart">Borrar Todo</button>
