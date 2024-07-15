@@ -74,14 +74,16 @@
       </div>
       <div class="offcanvas-body contenedor_offcanva_usuario">
         {% if user_info %}
-        <img src="{% static 'tienda/imagenestiendachida/Foto_del_logo-removebg-preview.png' %}" width="90px">
+        <img src="{% static 'tienda/imagenestiendachida/Foto_del_logo-removebg-preview.png' %}" width="180px" style="margin-top: -25x;">
+        <br><br><br>
         <h2 class="centrartexto">{{ user_info.nombres }}</h2>
-        <ul><li>{{ user_info.email }}</li></ul>
+        <ul style="padding-left: 0; list-style-position: inside;"><li style="margin-left: 0;">{{ user_info.email }}</li></ul>
 
         <h2>Ordenes</h2>
         {% for orden in user_info.ordenes %}
-        <ul><li>por: ${{orden.total}}: en camino</li></ul>
+        <ul style="padding-left: 0; list-style-position: inside;"><li style="margin-left: 0;">por: ${{ orden.total }}: en camino</li></ul>
         {% endfor %}
+        <br><br><br><br>
         <button type="button" class="btn btn-danger redondearboton moverboton" id="logoutBtn" data-url="{% url 'logout_user' %}">Cerrar sesión</button>
         {% else %}
         <h2 class="centrartexto">Iniciar Sesión <img src="{% static 'tienda/imagenestiendachida/iconoperro_usuario.png' %}" width="50px"></h2>
