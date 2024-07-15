@@ -49,45 +49,22 @@ input[type="submit"]:hover {
     margin-bottom: 10px;
 }
 
-
-
-/* style_pagos.css */
 .boton-pagar {
-    background-color: #FFD700; /* Color amarillo */
+    background-color: #FFD700;
     border: none;
     color: white;
-    padding: 12px 24px; /* Aumenta el tamaño del padding */
+    padding: 10px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 18px; /* Aumenta el tamaño de la fuente */
-    margin: 8px 4px; /* Aumenta la separación entre botones */
+    font-size: 16px;
+    margin: 4px 2px;
     cursor: pointer;
     border-radius: 12px;
     transition-duration: 0.4s;
 }
 
 .boton-pagar:hover {
-    background-color: #FFA500; /* Color naranja */
-    color: white;
-}
-
-.boton-retorno {
-    background-color: #007BFF; /* Color azul */
-    border: none;
-    color: white;
-    padding: 12px 24px; /* Aumenta el tamaño del padding */
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 18px; /* Aumenta el tamaño de la fuente */
-    margin: 8px 4px; /* Aumenta la separación entre botones */
-    cursor: pointer;
-    border-radius: 12px;
-    transition-duration: 0.4s;
-}
-
-.boton-retorno:hover {
-    background-color: #0056b3; /* Color azul oscuro */
+    background-color: #FFA500;
     color: white;
 }
