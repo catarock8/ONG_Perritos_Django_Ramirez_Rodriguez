@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Pagos</title>
+    <!--usaremos estilo interno pq son pocas funciones-->
     <link href="{% static 'tienda/css/style_pagos.css' %}" rel="stylesheet">
 </head>
 <body>
@@ -12,9 +13,9 @@
         <div class="alinear">
             <h2>Formulario de Pagos<img src="{% static 'tienda/imagenestiendachida/Logo-removebg-preview.png' %}" width="100px"></h2>
         </div>
-        <form id="payment-form">
+        <form action="#">
             <label for="nombre">Nombre en la Tarjeta:</label>
-            <input type="text" id="nombre" name="nombre" required>
+            <input type="text" id="nombre" name="nombre" required><!--el required viene integrado en html5 y hace que me aparezca el msj de necesidad de llenado de campo-->
 
             <label for="numero">Número de Tarjeta:</label>
             <input type="text" id="numero" name="numero" required>
@@ -35,7 +36,7 @@
                 <option value="americanexpress">American Express</option>
             </select>
 
-            <button type="submit" id="boton-pagar" class="boton-pagar">Pagar</button>
+            <input type="submit" value="Pagar">
         </form>
     </div>
     <br><br>
@@ -48,39 +49,6 @@
     </footer>
     <br><br>
     <script src="{% static 'tienda/js/script_pagos.js' %}"></script>
-    <script>
-        document.getElementById('payment-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const formData = new FormData(this);
-            let productos = JSON.parse(localStorage.getItem('carrito')); // Suponiendo que el carrito de compras está almacenado en localStorage
-
-            fetch('{% url "procesar_pago" %}', {
-                method: 'POST',
-                body: JSON.stringify({
-                    productos: productos,
-                    monto: document.getElementById('monto').value,
-                    nombre: document.getElementById('nombre').value,
-                    numero: document.getElementById('numero').value,
-                    caducidad: document.getElementById('caducidad').value,
-                    cvv: document.getElementById('cvv').value,
-                    tipo: document.getElementById('tipo').value
-                }),
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': '{{ csrf_token }}'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    localStorage.removeItem('carrito'); // Limpiar el carrito de compras
-                    window.location.href = '{% url "index" %}';
-                } else {
-                    alert('Error en el procesamiento del pago.');
-                }
-            })
-            .catch(error => console.error('Error:', error));
-        });
-    </script>
+    <script src="{% static 'tienda/js/script.js' %}"></script>
 </body>
 </html>

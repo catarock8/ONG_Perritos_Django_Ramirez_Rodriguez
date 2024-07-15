@@ -48,23 +48,3 @@ input[type="submit"]:hover {
     font-size: 18px;
     margin-bottom: 10px;
 }
-
-.boton-pagar {
-    background-color: #FFD700;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 12px;
-    transition-duration: 0.4s;
-}
-
-.boton-pagar:hover {
-    background-color: #FFA500;
-    color: white;
-}

@@ -18,35 +18,3 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById('monto').value = total;
     }
 });
-
-document.getElementById('payment-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const formData = new FormData(this);
-    let productos = JSON.parse(localStorage.getItem('carrito')); // Suponiendo que el carrito de compras está almacenado en localStorage
-
-    fetch('{% url "procesar_pago" %}', {
-        method: 'POST',
-        body: JSON.stringify({
-            productos: productos,
-            monto: document.getElementById('monto').value,
-            nombre: document.getElementById('nombre').value,
-            numero: document.getElementById('numero').value,
-            caducidad: document.getElementById('caducidad').value,
-            cvv: document.getElementById('cvv').value,
-            tipo: document.getElementById('tipo').value
-        }),
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': '{{ csrf_token }}'
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            window.location.href = '{% url "index" %}';
-        } else {
-            alert('Error en el procesamiento del pago.');
-        }
-    })
-    .catch(error => console.error('Error:', error));
-});
