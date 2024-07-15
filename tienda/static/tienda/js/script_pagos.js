@@ -18,3 +18,39 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById('monto').value = total;
     }
 });
+
+$(document).ready(function() {
+    $('#paymentForm').on('submit', function(event) {
+        event.preventDefault();
+        
+        var formData = {
+            'nombre': $('#nombre').val(),
+            'numero': $('#numero').val(),
+            'caducidad': $('#caducidad').val(),
+            'cvv': $('#cvv').val(),
+            'monto': $('#monto').val(),
+            'tipo': $('#tipo').val(),
+            'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val()
+        };
+
+        var url = $(this).attr('action');
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: formData,
+            success: function(response) {
+                if (response.status === 'ok') {
+                    alert('Pago realizado con éxito!');
+                    window.location.href = "{% url 'index' %}"; // Redirigir a la página de inicio o a una página de confirmación
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function(response) {
+                alert('Error al realizar el pago. Inténtalo de nuevo.');
+            }
+        });
+    });
+});
+

@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models.signals import post_delete, post_save
+from django.dispatch import receiver
 
 class Categoria(models.Model):
     id = models.AutoField(primary_key=True)
@@ -50,18 +52,39 @@ class Orden(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     fecha = models.DateTimeField(auto_now_add=True)
     total = models.DecimalField(max_digits=10, decimal_places=2)
+    productos_ids = models.TextField(default='')  # Nuevo campo para almacenar las IDs de productos
 
     def __str__(self):
         return f"Orden {self.id} de {self.usuario.nombres} {self.usuario.apellido_paterno}"
     
 class OrdenProducto(models.Model):
-    orden = models.ForeignKey(Orden, on_delete=models.CASCADE)
+    id = models.AutoField(primary_key=True)
+    orden = models.ForeignKey(Orden, on_delete=models.CASCADE, related_name='ordenes_producto')
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     cantidad = models.PositiveIntegerField(default=1)
     precio = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
         return f"{self.cantidad} x {self.producto.nombre} (Orden {self.orden.id})"
+
+# Signal para ajustar las IDs después de eliminar una orden
+@receiver(post_delete, sender=Orden)
+def rearrange_ids(sender, **kwargs):
+    for index, obj in enumerate(Orden.objects.all(), start=1):
+        obj.id = index
+        obj.save()
+
+@receiver(post_delete, sender=OrdenProducto)
+def rearrange_orden_producto_ids(sender, **kwargs):
+    for index, obj in enumerate(OrdenProducto.objects.all(), start=1):
+        obj.id = index
+        obj.save()
+
+@receiver(post_save, sender=OrdenProducto)
+def update_productos_ids(sender, instance, **kwargs):
+    orden = instance.orden
+    orden.productos_ids += f"{instance.id},"
+    orden.save()
 
 class Pago(models.Model):
     id = models.AutoField(primary_key=True)

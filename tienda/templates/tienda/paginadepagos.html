@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Pagos</title>
-    <!--usaremos estilo interno pq son pocas funciones-->
     <link href="{% static 'tienda/css/style_pagos.css' %}" rel="stylesheet">
 </head>
 <body>
@@ -13,12 +12,13 @@
         <div class="alinear">
             <h2>Formulario de Pagos<img src="{% static 'tienda/imagenestiendachida/Logo-removebg-preview.png' %}" width="100px"></h2>
         </div>
-        <form action="#">
+        <form id="paymentForm" method="post" action="{% url 'procesar_pago' %}">
+            {% csrf_token %}
             <label for="nombre">Nombre en la Tarjeta:</label>
-            <input type="text" id="nombre" name="nombre" required><!--el required viene integrado en html5 y hace que me aparezca el msj de necesidad de llenado de campo-->
+            <input type="text" id="nombre" name="nombre" required>
 
             <label for="numero">Número de Tarjeta:</label>
-            <input type="text" id="numero" name="numero" required>
+            <input type="number" id="numero" name="numero" required>
 
             <label for="caducidad">Fecha de Caducidad:</label>
             <input type="text" id="caducidad" name="caducidad" placeholder="MM/AA" required>
@@ -27,7 +27,7 @@
             <input type="number" id="cvv" name="cvv" required>
 
             <div id="monto-display" class="monto-display"></div>
-            <input type="hidden" id="monto" name="monto" required>
+            <input type="hidden" id="monto" name="monto" required value="{{ request.GET.total }}">
 
             <label for="tipo">Tipo de Tarjeta:</label>
             <select id="tipo" name="tipo" required>
@@ -50,5 +50,37 @@
     <br><br>
     <script src="{% static 'tienda/js/script_pagos.js' %}"></script>
     <script src="{% static 'tienda/js/script.js' %}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('paymentForm');
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const formData = new FormData(form);
+                const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-CSRFToken': csrfToken
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'ok') {
+                        alert('Pago procesado correctamente');
+                        window.location.href = '/tienda/index/';
+                    } else {
+                        alert('Error: ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error al procesar el pago');
+                });
+            });
+        });
+    </script>
 </body>
 </html>

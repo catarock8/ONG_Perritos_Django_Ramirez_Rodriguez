@@ -71,32 +71,48 @@
           </nav>
     </header>
     
+    <!--ahora añadimos el div para el offcanva del perfil de usuario, codigo sacado de bootstrap-->
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasRightLabel"></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body contenedor_offcanva_usuario">
-          <h2 class="centrartexto">Iniciar Sesión <img src="{% static 'tienda/imagenestiendachida/iconoperro_usuario.png' %}" width="50px"></h2>
-          <br>
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasRightLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body contenedor_offcanva_usuario">
+        {% if user_info %}
+        <img src="{% static 'tienda/imagenestiendachida/Foto_del_logo-removebg-preview.png' %}" width="90px">
+        <h2 class="centrartexto">{{ user_info.nombres }}</h2>
+        <ul><li>{{ user_info.email }}</li></ul>
+
+        <h2>Ordenes</h2>
+        {% for orden in user_info.ordenes %}
+        <ul><li>por: ${{orden.total}}: en camino</li></ul>
+        {% endfor %}
+        <button type="button" class="btn btn-danger redondearboton moverboton" id="logoutBtn" data-url="{% url 'logout_user' %}">Cerrar sesión</button>
+        {% else %}
+        <h2 class="centrartexto">Iniciar Sesión <img src="{% static 'tienda/imagenestiendachida/iconoperro_usuario.png' %}" width="50px"></h2>
+        <br>
+        <form id="loginForm" method="post" data-url="{% url 'login_user' %}">
+          {% csrf_token %}
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Correo Electrónico</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
+            <label for="email">Correo Electrónico</label>
           </div>
           <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Contraseña</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+            <label for="password">Contraseña</label>
           </div>
           <br>
-          <button type="button" class="btn btn-warning redondearboton moverboton">Iniciar sesión</button>
-          <br>
-          <br>
-          <hr>
-          <br>
-          <h3 class="centrartexto">¿Aún no tienes cuenta?</h3><br>
-          <button type="button" class="btn btn-primary redondearboton moverboton"><a class="letrachida" href="{% url 'registro' %}">Registrate Aquí</a></button> 
-        </div>
-    </div>
+          <button type="submit" class="btn btn-warning redondearboton moverboton">Iniciar sesión</button>
+        </form>
+        <br>
+        <br>
+        <hr><!--separacion que te lleva al registro-->
+        <br>
+        <h3 class="centrartexto">¿Aún no tienes cuenta?</h3><br>
+        <button type="button" class="btn btn-primary redondearboton moverboton"><a class="letrachida" href="{% url 'registro' %}">Registrate Aquí</a></button> 
+        {% endif %}
+      </div>
+  </div>
     
     <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
       <div class="offcanvas-header">
@@ -107,7 +123,9 @@
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="cart text-center">
+        <div id="cart-items-container" class="cart-items-container">
           <ul id="cart-items" class="list-unstyled"></ul>
+      </div>
           <p>Total: $<span id="total-price">0</span></p>
           <button type="button" class="btn btn-warning mb-2" >
             <a class="letrachida2" id="go-to-pay" data-url="{% url 'paginadepagos' %}" href="#" style="text-decoration: none; color: inherit;">IR A PAGAR</a>
@@ -186,6 +204,89 @@
           let url = this.getAttribute('data-url');
           window.location.href = `${url}?total=${totalPrice}`;
       });
+      $(document).ready(function() {
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    const csrftoken = getCookie('csrftoken');
+
+    $('#loginForm').on('submit', function(event) {
+        event.preventDefault();
+        var formData = {
+            'email': $('#email').val(),
+            'password': $('#password').val(),
+            'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val()
+        };
+
+        var url = $(this).data('url');
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: formData,
+            headers: {
+                'X-CSRFToken': csrftoken
+            },
+            success: function(response) {
+                console.log("Response:", response);
+                if (response.status == 'ok') {
+                  alert('Inicio de sesion exitoso!');
+                    // Redirige o actualiza la página para mostrar que el usuario ha iniciado sesión
+                    location.reload();
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function(response) {
+                console.log("Error:", response);
+                alert('Error al iniciar sesión. Inténtalo de nuevo.');
+            }
+        });
+    });
+
+    $('#logoutBtn').on('click', function() {
+        var url = $(this).data('url');
+        console.log("URL:", url);
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: {
+                'csrfmiddlewaretoken': csrftoken
+            },
+            headers: {
+                'X-CSRFToken': csrftoken
+            },
+            success: function(response) {
+                console.log("Logout Response:", response);
+                if (response.status == 'ok') {
+                    alert('Cierre de sesión exitoso!');
+                    // Redirige o actualiza la página para mostrar que el usuario ha cerrado sesión
+                    location.reload();
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function(response) {
+                console.log("Logout Error:", response);
+                alert('Error al cerrar sesión. Inténtalo de nuevo.');
+            }
+        });
+    });
+});
+
       </script>
 </body>
 </html>
